@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Laura – unsere Seite</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Supabase JS (v2) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header>
+    <h1>Laura 💚</h1>
+    <nav id="app-nav" class="hidden">
+      <button data-view="calendar">Kalender</button>
+      <button data-view="storage">Dateien</button>
+      <button data-view="account">Konto</button>
+      <button id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- AUTH -->
+    <section id="auth-view">
+      <div class="card">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label>Nutzername
+            <input id="login-username" required autocomplete="username" />
+          </label>
+          <label>Passwort
+            <input id="login-password" type="password" required autocomplete="current-password" />
+          </label>
+          <button type="submit">Einloggen</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Registrieren (nur wir 🤍)</h2>
+        <form id="register-form">
+          <label>Nutzername
+            <input id="reg-username" required />
+          </label>
+          <label>Passwort
+            <input id="reg-password" type="password" required />
+          </label>
+          <label>Anzeigename (optional)
+            <input id="reg-display" />
+          </label>
+          <button type="submit">Account erstellen</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="calendar-view" class="hidden">
+      <h2>Gemeinschaftskalender</h2>
+
+      <form id="event-form" class="card">
+        <div class="row">
+          <label>Titel
+            <input id="ev-title" required />
+          </label>
+          <label>Ganztägig
+            <input id="ev-all-day" type="checkbox" />
+          </label>
+        </div>
+        <div class="row">
+          <label>Start
+            <input id="ev-start" type="datetime-local" required />
+          </label>
+          <label>Ende (optional)
+            <input id="ev-end" type="datetime-local" />
+          </label>
+        </div>
+        <label>Beschreibung
+          <textarea id="ev-desc" rows="2"></textarea>
+        </label>
+        <button type="submit">Speichern</button>
+      </form>
+
+      <div class="card">
+        <div class="row">
+          <label>Zeitraum ab:
+            <input id="filter-from" type="date" />
+          </label>
+          <label>bis:
+            <input id="filter-to" type="date" />
+          </label>
+          <button id="reload-events">Neu laden</button>
+        </div>
+        <ul id="events-list"></ul>
+      </div>
+    </section>
+
+    <!-- STORAGE -->
+    <section id="storage-view" class="hidden">
+      <h2>Dateien</h2>
+      <form id="upload-form" class="card">
+        <input id="file-input" type="file" />
+        <button type="submit">Hochladen</button>
+      </form>
+      <div class="card">
+        <ul id="files-list"></ul>
+      </div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section id="account-view" class="hidden">
+      <h2>Konto</h2>
+      <div class="card">
+        <p id="whoami">–</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS-Module -->
+  <script src="js/config.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

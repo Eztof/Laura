@@ -1,0 +1,2 @@
+// Erstellt den Supabase-Client (global)
+window.sb = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
