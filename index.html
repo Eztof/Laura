@@ -20,10 +20,22 @@
   </header>
 
   <main>
-    <!-- AUTH -->
-    <section id="auth-view">
-      <div class="card">
-        <h2>Login</h2>
+    <!-- LANDING -->
+    <section id="landing-view">
+      <div class="hero card">
+        <h2>Willkommen, ihr Zwei ✨</h2>
+        <p>Wählt aus, was ihr machen wollt:</p>
+        <div class="actions">
+          <button id="go-login" class="primary">Anmelden</button>
+          <button id="go-register" class="ghost">Registrieren</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login-view" class="hidden">
+      <div class="card w400">
+        <h2>Anmelden</h2>
         <form id="login-form">
           <label>Nutzername
             <input id="login-username" required autocomplete="username" />
@@ -31,24 +43,29 @@
           <label>Passwort
             <input id="login-password" type="password" required autocomplete="current-password" />
           </label>
-          <button type="submit">Einloggen</button>
+          <button type="submit" class="primary">Einloggen</button>
         </form>
+        <p class="muted small">Noch kein Konto? <a href="#" id="swap-to-register">Registrieren</a></p>
       </div>
+    </section>
 
-      <div class="card">
-        <h2>Registrieren (nur wir 🤍)</h2>
+    <!-- REGISTER -->
+    <section id="register-view" class="hidden">
+      <div class="card w400">
+        <h2>Registrieren</h2>
         <form id="register-form">
           <label>Nutzername
-            <input id="reg-username" required />
+            <input id="reg-username" required autocomplete="username" />
           </label>
           <label>Passwort
-            <input id="reg-password" type="password" required />
+            <input id="reg-password" type="password" required autocomplete="new-password" />
           </label>
           <label>Anzeigename (optional)
-            <input id="reg-display" />
+            <input id="reg-display" autocomplete="nickname" />
           </label>
-          <button type="submit">Account erstellen</button>
+          <button type="submit" class="primary">Account erstellen</button>
         </form>
+        <p class="muted small">Schon ein Konto? <a href="#" id="swap-to-login">Anmelden</a></p>
       </div>
     </section>
 
@@ -61,8 +78,9 @@
           <label>Titel
             <input id="ev-title" required />
           </label>
-          <label>Ganztägig
+          <label class="checkbox">
             <input id="ev-all-day" type="checkbox" />
+            Ganztägig
           </label>
         </div>
         <div class="row">
@@ -76,7 +94,7 @@
         <label>Beschreibung
           <textarea id="ev-desc" rows="2"></textarea>
         </label>
-        <button type="submit">Speichern</button>
+        <button type="submit" class="primary">Speichern</button>
       </form>
 
       <div class="card">
@@ -98,7 +116,7 @@
       <h2>Dateien</h2>
       <form id="upload-form" class="card">
         <input id="file-input" type="file" />
-        <button type="submit">Hochladen</button>
+        <button type="submit" class="primary">Hochladen</button>
       </form>
       <div class="card">
         <ul id="files-list"></ul>
