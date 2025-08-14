@@ -36,12 +36,16 @@
     <section id="login-view" class="hidden">
       <div class="card w400">
         <h2>Anmelden</h2>
-        <form id="login-form">
+        <form id="login-form" autocomplete="on">
           <label>Nutzername
             <input id="login-username" required autocomplete="username" />
           </label>
           <label>Passwort
             <input id="login-password" type="password" required autocomplete="current-password" />
+          </label>
+          <label class="checkbox">
+            <input id="login-remember" type="checkbox" />
+            Angemeldet bleiben
           </label>
           <button type="submit" class="primary">Einloggen</button>
         </form>
@@ -53,7 +57,7 @@
     <section id="register-view" class="hidden">
       <div class="card w400">
         <h2>Registrieren</h2>
-        <form id="register-form">
+        <form id="register-form" autocomplete="on">
           <label>Nutzername
             <input id="reg-username" required autocomplete="username" />
           </label>
@@ -69,11 +73,26 @@
       </div>
     </section>
 
-    <!-- CALENDAR -->
+    <!-- CALENDAR (Monatsansicht) -->
     <section id="calendar-view" class="hidden">
-      <h2>Gemeinschaftskalender</h2>
+      <div class="cal-header card">
+        <div class="cal-nav">
+          <button id="cal-prev" aria-label="Vorheriger Monat">‹</button>
+          <button id="cal-today" aria-label="Heute">Heute</button>
+          <button id="cal-next" aria-label="Nächster Monat">›</button>
+        </div>
+        <h2 id="cal-title">Monat Jahr</h2>
+      </div>
+
+      <div class="card">
+        <div class="cal-weekdays">
+          <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div>
+        </div>
+        <div id="cal-cells" class="cal-grid"></div>
+      </div>
 
       <form id="event-form" class="card">
+        <h3>Termin hinzufügen</h3>
         <div class="row">
           <label>Titel
             <input id="ev-title" required />
@@ -98,15 +117,7 @@
       </form>
 
       <div class="card">
-        <div class="row">
-          <label>Zeitraum ab:
-            <input id="filter-from" type="date" />
-          </label>
-          <label>bis:
-            <input id="filter-to" type="date" />
-          </label>
-          <button id="reload-events">Neu laden</button>
-        </div>
+        <h3>Termine (Liste)</h3>
         <ul id="events-list"></ul>
       </div>
     </section>
@@ -118,8 +129,27 @@
         <input id="file-input" type="file" />
         <button type="submit" class="primary">Hochladen</button>
       </form>
+
       <div class="card">
-        <ul id="files-list"></ul>
+        <div class="files-toolbar">
+          <button id="files-reload">Neu laden</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="files-table" aria-label="Dateiliste">
+            <thead>
+              <tr>
+                <th>Datei</th>
+                <th>Größe</th>
+                <th>Hochgeladen</th>
+                <th class="actions-col">Aktionen</th>
+              </tr>
+            </thead>
+            <tbody id="files-body"></tbody>
+          </table>
+        </div>
+
+        <div id="files-empty" class="muted small hidden">Noch keine Dateien hochgeladen.</div>
       </div>
     </section>
 
